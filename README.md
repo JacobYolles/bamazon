@@ -1,31 +1,20 @@
 # bamazon
 
-Create a MySQL Database called bamazon.
-Then create a Table inside of that database called products.
-The products table should have each of the following columns:
+Welcome to my bamazon app. Below, I will be detailing how this program functions in the various forms for each application point.
 
-item_id (unique id for each product)
-product_name (Name of product)
-department_name
-price (cost to customer)
-stock_quantity (how much of the product is available in stores)
+1. Bamazoncustomercode.js:
+1A. This application replicates a bamazon program, or a bad amazon program, through a node based application. It runs off 2 files and 4 programs. 
+Files: bamazoncustomercode.js and bamazon.sql
+Programs: visual studio code, MYSQL, MAMP, and node for terminal. 
 
-Populate this database with around 10 different products. (i.e. Insert "mock" data rows into this database and table).
-Then create a Node application called bamazonCustomer.js. Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale.
-The app should then prompt users with two messages.
+Process: the application will open up greeting the user to the store and introducing the wares that are available for them to peruse through, including: the items id, the name of the item, the department name for the item, the price of the item, and how many items we have in stock for each instance.
 
-The first should ask them the ID of the product they would like to buy.
-The second message should ask how many units of the product they would like to buy.
+There are ten "Generic" items available for sale. the application will open by asking what items the user would like to purchase based on a nicely formatted spread sheet that is just above it. The user will then enter the id instance number of the item, then the program will ask how many of that item the user would like to purchase, if the user picks a number that is within the limit of stock available, the program will tell the user a congratulatory message on their purchase and tell them what their total came out to be. The application will make the assumption of the sale going through.
 
-Once the customer has placed the order, your application should check if your store has enough of the product to meet the customer's request.
+However! if the user fails to enter a stock number that is equal to or less than the remaining stock number, the program will give them a snarky retort and ask them to either try again, or quit while they are ahead. 
 
-If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
+If the purchase is succesful the application will ask if there is another item that the user had their eye on. If they say yes, the cycle will loop, if the say no the application will end.
 
-However, if your store does have enough of the product, you should fulfill the customer's order.
+If the purchase is not successful, the application will ask the user if they would like to try again. 
 
-This means updating the SQL database to reflect the remaining quantity.
-Once the update goes through, show the customer the total cost of their purchase.
-
-
-
-
+The table creates and runs through MYSQL and MAMP and will live adjust functioning number on the stock remaining as the app proceeds in its session, it will only reset its variables should the table be re-created. 

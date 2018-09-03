@@ -77,6 +77,8 @@ function readProducts() {
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
         
+      console.log("Welcome to Bamazon!")
+
         console.log("Look at the ugly version of all our products!")
         console.log('--------------------------------------------------------------------------------------------------')
         console.log(res);
