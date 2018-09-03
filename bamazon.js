@@ -1,6 +1,10 @@
+  // SET UP ALL REQUIRES FIRST
+
 var inquirer = require("inquirer");
 var mysql = require("mysql");
 
+
+// SET UP BASE LINE STANDARD CONNECTIVITY TO TABLE.
 var connection = mysql.createConnection({
     host: "localhost",
     port: 8889,
@@ -9,6 +13,8 @@ var connection = mysql.createConnection({
     database: "bamazon_db"
 });
 
+
+// PROVE THAT THE CONNECTION WORKS.
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
