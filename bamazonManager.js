@@ -210,5 +210,37 @@ console.log(res)
 
 
 function addNewProduct() {
-    
+    inquirer.prompt([{
+        name: "product_name",
+        type: "input",
+        message: "Enter the name of the product please, manager?",
+    }, {
+        name: "department_name",
+        type: "input",
+        message: "Enter the department of the product please, manager?"
+    }, {
+        name: "price",
+        type: "input",
+        message: "What should the price of this new product be, please, manager?",
+    }, {
+        name: "stock_quantity",
+        type: "input",
+        message: "Enter the current stock quantity please, Manager?",
+    }]).then(function(answer) { 
+        connection.query("INSERT INTO products SET ?", {
+            product_name: answer.product_name,
+            department_name: answer.department_name,
+            price: answer.price,
+            stock_quantity: answer.stock_quantity
+        }, function (err, res) {
+            console.log("\n Your new product was added manager, please see the update on your next viewing :)\n");
+            connection.query("SELECT * FROM products", function(err, res){
+                console.log(res)
+            });
+            anythingElse();
+            });
+        });
 }
+
+
+
