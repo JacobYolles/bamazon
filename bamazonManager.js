@@ -97,7 +97,7 @@ function anythingElse() {
         if(ans.reply){
           welcomeTwo();
         } else{
-          console.log("See you soon!");
+          console.log("See you around, Buster Brown!");
         }
       });
 }
@@ -172,7 +172,7 @@ console.log(res)
 
                     connection.query("SELECT * FROM products WHERE ?", {id: answer.id},function(err,res){
                         itemQuantity = res[0].stock_quantity + parseInt(answer.quantity);
-                        console.log("I've updated the stock quantity master, see inventory table\n");
+                        console.log("I've updated the stock quantity master, you will see it on the next go around\n");
                         console.log(res)
                         connection.query("UPDATE products SET ? WHERE ?", [{
                             stock_quantity: itemQuantity
@@ -182,7 +182,8 @@ console.log(res)
                             if (err) throw err
                     
                         });
-                        // connection.query("SELECT * FROM products WHERE products DIFFERENCE > 1",function (err, res) {
+
+                        // connection.query("SELECT * FROM products WHERE stock_quantity DIFFERENCE => 1",function (err, res) {
                         //     console.log(res)
                         // })
                         
@@ -198,9 +199,9 @@ console.log(res)
 
                         
                         // });
-                    
+                        anythingElse();     
                     });
-                
+               
                 });
             
             }
@@ -208,4 +209,6 @@ console.log(res)
    
 
 
+function addNewProduct() {
     
+}
