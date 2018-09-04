@@ -156,7 +156,7 @@ function readProducts() {
      function(err, res){
        if (err) throw (err) 
            console.log("Success! Your total is $" + grandTotal.toFixed(2) + ". Your item(s) will be shipped to you as soon as possible.")
-          
+    
 
           
             

@@ -15,10 +15,10 @@ INSERT INTO products (product_name, department_name, price, stock_quantity) -- 1
 VALUES               ("Windex", "Housewares", 5.00, 25);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity) -- 2
-VALUES               ("Biotene", "Housewares", 2.50, 30);
+VALUES               ("Biotene", "Housewares", 2.50, 2);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity) -- 3
-VALUES               ("Blackout Curtains", "Window Treatments", 50.00, 10);
+VALUES               ("Blackout Curtains", "Window Treatments", 50.00, 2);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity) -- 4
 VALUES               ("Basketball", "Sports", 20.00, 15);
