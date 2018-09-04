@@ -236,8 +236,9 @@ function addNewProduct() {
             console.log("\n Your new product was added manager, please see the update on your next viewing :)\n");
             connection.query("SELECT * FROM products", function(err, res){
                 console.log(res)
+                anythingElse();
             });
-            anythingElse();
+           
             });
         });
 }
