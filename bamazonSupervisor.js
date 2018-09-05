@@ -22,7 +22,7 @@ connection.connect(function(err) {
 });
 
 
-
+// primary greeting with standard console log.
 function hello() {
     inquirer.prompt([{
         type: "list",
@@ -40,6 +40,7 @@ function hello() {
     });
 }
 
+//secondary greeting, with changed console log.
 function helloTwo() {
     inquirer.prompt([{
         type: "list",
@@ -57,7 +58,7 @@ function helloTwo() {
     });
 }
 
-
+// when view product sales is chosen.
 function viewProductSales() {
     connection.query("SELECT * FROM Departments", function(err, res){
         if(err) throw err;
@@ -76,7 +77,7 @@ function viewProductSales() {
       })
     }
 
-
+// when create new department is chosen.
 function createNewDepartment() {
     console.log("Creating New Department, Executive.")
     // create a prompt for the department name and numbers if no value is provided default is 0.
