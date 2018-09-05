@@ -29,3 +29,14 @@ Process: This application opens up by greeting the manager to the managerial sid
 The process uses the same models that were created for bamazoncustomer code, so the same base items apply here but are either added to or appended on from. if the manager fails to enter numbers or responses that are correct in the context of the application, it will shut down on them.
 
 The process will loop with a different cycle using the same code but a different message to query the manager if they are finished or if there are more activities they would like to partake in.
+
+3. bamazonSupervisor.js
+3A. This application replicates a supervisory look at the bamazon program, or a bad amazon program, using a node based application, based on an (CEO?)s position. It runs off 2 files and 4 programs. 
+Files: bamazonSupervisor.js and bamazonsupervisor.sql
+Programs: Visual Studio Code, MYSQL, MAMP, and node for terminal, with some node programs ran through.
+
+Process: This application opens up by greeting the supervisor and asking if they would like to view product sales, or if they are interested in creating a new department. 
+
+Based on the choice of the supervisor it will take them to a new screen, where they will either be able to see how the stores departments are functioning, or they will be allowed to add a brand new department to the store. 
+
+The process will loop with a different cycle using the same code but a different message to query the supervisor if they are finished or if there are more activities they would like to partake in.
