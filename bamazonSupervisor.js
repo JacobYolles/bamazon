@@ -59,10 +59,10 @@ function helloTwo() {
 
 
 function viewProductSales() {
-    connection.query('SELECT * FROM Departments', function(err, res){
+    connection.query("SELECT * FROM Departments", function(err, res){
         if(err) throw err;
-        console.log('>>>>>>Product Sales by Department<<<<<<');
-        console.log('----------------------------------------------------------------------------------------------------')
+        console.log(">>>>>>Product Sales by Department<<<<<<");
+        console.log("----------------------------------------------------------------------------------------------------")
     
         for(var i = 0; i<res.length;i++){
           console.log("Department ID: " + res[i].department_id 
@@ -70,11 +70,94 @@ function viewProductSales() {
             " | " + "Over Head Cost: " + (res[i].over_head_costs).toFixed(2) + 
             " | " + "Product Sales: " + (res[i].total_sales).toFixed(2) + 
             " | " + "Total Profit: " + (res[i].total_sales - res[i].over_head_costs).toFixed(2));
-          console.log('--------------------------------------------------------------------------------------------------')
+            console.log("----------------------------------------------------------------------------------------------------")
         }
         helloTwo();
       })
     }
+
+
+function createNewDepartment() {
+    console.log("Creating New Department, Executive.")
+    // create a prompt for the department name and numbers if no value is provided default is 0.
+    inquirer.prompt([{
+        type: "input",
+        name: "department_name",
+        message: "What is the name of the new department you would like to add today?"
+    }, {
+        type: "input",
+        name: "over_head_costs",
+        message: "What is the overhead cost of the new department you would like to add today?",
+        // default: 0,
+        validate: function (val) {
+            if (isNaN(val) === false) {return true;}
+            else {return false;}
+        }
+    }, {
+        type: "input",
+        name: "total_sales",
+        message: "What are the current product sales for your new department?",
+        // default: 0,
+        validate: function (val) {
+            if (isNaN(val) === false) {return true;}
+            else {return false;}
+        }
+    }
+    ]).then(function(ans){
+        connection.query("INSERT INTO departments SET ?", {
+            department_name: ans.department_name,
+            over_head_costs: ans.over_head_costs,
+            total_sales: ans.total_sales
+        }, function(err, res) {
+            if (err) throw (err)
+            console.log("Your new department was added, executive! You will see it on your next go around!")
+            console.log(res)
+        })
+    })
+}
+
+// function createNewDept(){
+//     console.log('>>>>>>Creating New Department<<<<<<');
+//     //prompts to add deptName and numbers. if no value is then by default = 0
+//     inquirer.prompt([
+//     {
+//       type: "input",
+//       name: "deptName",
+//       message: "Department Name: "
+//     }, {
+//       type: "input",
+//       name: "overHeadCost",
+//       message: "Over Head Cost: ",
+//       default: 0,
+//       validate: function(val){
+//         if(isNaN(val) === false){return true;}
+//         else{return false;}
+//       }
+//     }, {
+//       type: "input",
+//       name: "prodSales",
+//       message: "Product Sales: ",
+//       default: 0,
+//       validate: function(val){
+//         if(isNaN(val) === false){return true;}
+//         else{return false;}
+//       }
+//     }
+//     ]).then(function(ans){
+//       connection.query('INSERT INTO Departments SET ?',{
+//         DepartmentName: ans.deptName,
+//         OverHeadCosts: ans.overHeadCost,
+//         TotalSales: ans.prodSales
+//       }, function(err, res){
+//         if(err) throw err;
+//         console.log('Another department was added.');
+//       })
+//       start();
+//     });
+//   }
+
+// start();
+
 // Create a new MySQL table called departments. Your table should include the following columns:
 
 // department_id
