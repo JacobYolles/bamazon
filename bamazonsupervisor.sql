@@ -20,7 +20,7 @@ INSERT INTO departments (department_name, over_head_costs, total_sales)
 VALUES                ("Sports", 4030.00, 2000.00);
 
 INSERT INTO departments( department_name, over_head_costs, total_sales)  
-VALUES                 ("Electronics", 1000.00, 900.00);
+VALUES                 ("Electronics", 10000.00, 20000.00);
 
 INSERT INTO departments (department_name, over_head_costs, total_sales)  
 VALUES                 ("Linens", 6090.00, 9080.00);

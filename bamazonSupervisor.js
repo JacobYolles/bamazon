@@ -10,12 +10,71 @@
       port: 8889,
       user: "root",
       password: "root",
-      database: "bamazon_db"
+      database: "departments_db"
   });
 
 //   Challenge #3: Supervisor View (Final Level)
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("connected as id " + connection.threadId + "\n");
+
+    hello();
+});
 
 
+
+function hello() {
+    inquirer.prompt([{
+        type: "list",
+        name: "decision",
+        message: "Welcome Executive Manager, what would you like to do today? :)",
+        choices: ["View Product Sales by Department", "Create New Department", "End current session"]
+    }]).then(function(ans) {
+        switch (ans.decision) {
+            case "View Product Sales by Department": viewProductSales();
+            break;
+            case "Create New Department": createNewDepartment();
+            break;
+            case "End current session": console.log("Have a wonderful day!") + connection.end(); 
+        }
+    });
+}
+
+function helloTwo() {
+    inquirer.prompt([{
+        type: "list",
+        name: "decision",
+        message: "Welcome again, Executive Manager, what else would you like to do today? :)",
+        choices: ["View Product Sales by Department", "Create New Department", "End current session"]
+    }]).then(function(ans) {
+        switch (ans.decision) {
+            case "View Product Sales by Department": viewProductSales();
+            break;
+            case "Create New Department": createNewDepartment();
+            break;
+            case "End current session": console.log("Have a wonderful day!") + connection.end(); 
+        }
+    });
+}
+
+
+function viewProductSales() {
+    connection.query('SELECT * FROM Departments', function(err, res){
+        if(err) throw err;
+        console.log('>>>>>>Product Sales by Department<<<<<<');
+        console.log('----------------------------------------------------------------------------------------------------')
+    
+        for(var i = 0; i<res.length;i++){
+          console.log("Department ID: " + res[i].department_id 
+          + " | " + "Department Name: " + res[i].department_name + 
+            " | " + "Over Head Cost: " + (res[i].over_head_costs).toFixed(2) + 
+            " | " + "Product Sales: " + (res[i].total_sales).toFixed(2) + 
+            " | " + "Total Profit: " + (res[i].total_sales - res[i].over_head_costs).toFixed(2));
+          console.log('--------------------------------------------------------------------------------------------------')
+        }
+        helloTwo();
+      })
+    }
 // Create a new MySQL table called departments. Your table should include the following columns:
 
 // department_id
